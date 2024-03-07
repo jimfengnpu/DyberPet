@@ -6,10 +6,12 @@ from sys import platform
 from PySide6.QtGui import QImage, QPixmap
 from DyberPet.conf import PetData
 from PySide6 import QtCore
+from PySide6.QtCore import Qt
 
 if platform == 'win32':
     basedir = ''
     BASEDIR = ''
+    CommonWindowFlag =  Qt.ToolTip
 else:
     #from pathlib import Path
     basedir = os.path.dirname(__file__) #Path(os.path.dirname(__file__))
@@ -17,6 +19,7 @@ else:
     basedir = basedir.replace('\\','/')
     basedir = '/'.join(basedir.split('/')[:-1])
     BASEDIR = basedir
+    CommonWindowFlag = Qt.ToolTip
 
 if platform == 'linux':
     configdir = os.path.dirname(os.environ['HOME']+'/.config/DyberPet/DyberPet')

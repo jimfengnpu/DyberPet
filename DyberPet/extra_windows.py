@@ -465,9 +465,9 @@ class SettingUI(QWidget):
         self.setAttribute(Qt.WA_TranslucentBackground, True)
 
         if settings.platform == 'win32':
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.SubWindow | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
+            self.setWindowFlags(Qt.FramelessWindowHint | Qt.ToolTip | Qt.SubWindow | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
         else:
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
+            self.setWindowFlags(Qt.FramelessWindowHint | Qt.ToolTip | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
 
     def mousePressEvent(self, event):
         """
@@ -849,14 +849,11 @@ class Tomato(QWidget):
         self.setLayout(self.layout_window)
         self.setAutoFillBackground(False)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
-        if settings.platform == 'win32':
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.SubWindow | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
-        else:
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
+        self.setWindowFlags(settings.CommonWindowFlag | Qt.WindowStaysOnTopHint)
         #self.setLayout(vbox_t)
 
         #self.setFixedWidth(int(250*size_factor))
-        #self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.SubWindow)
+        #self.setWindowFlags(Qt.FramelessWindowHint | Qt.ToolTip | Qt.WindowStaysOnTopHint | Qt.SubWindow)
 
 
     def mousePressEvent(self, event):
@@ -1118,10 +1115,7 @@ class Focus(QWidget):
         self.setAutoFillBackground(False)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
         #self.setFixedSize(250*size_factor,200*size_factor)
-        if settings.platform == 'win32':
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.SubWindow | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
-        else:
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
+        self.setWindowFlags(settings.CommonWindowFlag | Qt.WindowStaysOnTopHint)
 
     def mousePressEvent(self, event):
         """
@@ -1536,10 +1530,7 @@ class Remindme(QWidget):
         #self.setFixedSize(450*size_factor,300*size_factor)
         self.setAutoFillBackground(False)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
-        if settings.platform == 'win32':
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.SubWindow | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
-        else:
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
+        self.setWindowFlags(settings.CommonWindowFlag | Qt.WindowStaysOnTopHint)
 
         if os.path.isfile(os.path.join(configdir,'data/remindme.txt')):
             f = open(os.path.join(configdir,'data/remindme.txt'),'r', encoding='UTF-8')
@@ -2206,14 +2197,11 @@ class Inventory(QWidget):
         self.setLayout(self.layout_window)
         self.setAutoFillBackground(False)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
-        if settings.platform == 'win32':
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.SubWindow | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
-        else:
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
+        self.setWindowFlags(settings.CommonWindowFlag | Qt.WindowStaysOnTopHint)
 
 
         #self.setLayout(windowLayout)
-        #self.setWindowFlags(Qt.FramelessWindowHint | Qt.SubWindow)
+        #self.setWindowFlags(Qt.FramelessWindowHint | Qt.ToolTip | Qt.SubWindow)
         #self.setFixedSize(235,379)
         #self.setStyleSheet(InvenStyle)
         '''
@@ -2717,12 +2705,12 @@ class QToaster(QFrame):
         self.setAutoFillBackground(False)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
         if platform == 'win32':
-            self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint |
+            self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint | Qt.ToolTip | Qt.WindowStaysOnTopHint |
             Qt.BypassWindowManagerHint | Qt.SubWindow | Qt.NoDropShadowWindowHint)
         else:
             # SubWindow not work in MacOS
-            self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint |
-            Qt.BypassWindowManagerHint | Qt.NoDropShadowWindowHint)
+            self.setWindowFlags(self.windowFlags() | Qt.WindowStaysOnTopHint |
+            Qt.BypassWindowManagerHint | settings.CommonWindowFlag)
         
         # This is a dirty hack!
         # parentless objects are garbage collected, so the widget will be
@@ -3082,7 +3070,7 @@ class DPDialogue(QWidget):
         '''
         self.setAutoFillBackground(False)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
-        self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint |
+        self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint | Qt.ToolTip | Qt.WindowStaysOnTopHint |
             Qt.BypassWindowManagerHint | Qt.SubWindow | Qt.NoDropShadowWindowHint)
         '''
 
@@ -3184,10 +3172,7 @@ class DPDialogue(QWidget):
         self.setLayout(self.layout_window)
         self.setAutoFillBackground(False)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
-        if settings.platform == 'win32':
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.SubWindow | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
-        else:
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
+        self.setWindowFlags(settings.CommonWindowFlag | Qt.WindowStaysOnTopHint)
 
         self.setFixedWidth(int(350)) #*size_factor))
         #self.adjustSize()
@@ -3238,12 +3223,12 @@ class DPDialogue(QWidget):
 
     def ontop_update(self):
         if settings.on_top_hint:
-            #self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.SubWindow | Qt.NoDropShadowWindowHint)
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
+            #self.setWindowFlags(Qt.FramelessWindowHint | Qt.ToolTip | Qt.WindowStaysOnTopHint | Qt.SubWindow | Qt.NoDropShadowWindowHint)
+            self.setWindowFlags(settings.CommonWindowFlag | Qt.WindowStaysOnTopHint)
 
         else:
-            #self.setWindowFlags(Qt.FramelessWindowHint | Qt.SubWindow | Qt.NoDropShadowWindowHint)
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.NoDropShadowWindowHint)
+            #self.setWindowFlags(Qt.FramelessWindowHint | Qt.ToolTip | Qt.SubWindow | Qt.NoDropShadowWindowHint)
+            self.setWindowFlags(settings.CommonWindowFlag)
 
         self.setAutoFillBackground(False)
         self.setAttribute(Qt.WA_TranslucentBackground, True)

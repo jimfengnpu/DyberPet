@@ -17,7 +17,7 @@ from qfluentwidgets.common.style_sheet import FluentStyleSheet, themeColor
 from qfluentwidgets.common.font import getFont
 from qfluentwidgets.common.config import isDarkTheme
 from qfluentwidgets.components.widgets.scroll_bar import SmoothScrollDelegate
-
+import DyberPet.settings as settings
 
 class CustomMenuStyle(QProxyStyle):
     """ Custom menu style """
@@ -45,8 +45,7 @@ class DWMMenu(QMenu):
     def __init__(self, title="", parent=None):
         super().__init__(title, parent)
         self.windowEffect = WindowEffect(self)
-        self.setWindowFlags(
-            Qt.FramelessWindowHint | Qt.Popup | Qt.NoDropShadowWindowHint)
+        self.setWindowFlags(settings.CommonWindowFlag | Qt.Popup)
         self.setAttribute(Qt.WA_StyledBackground)
         self.setStyle(CustomMenuStyle())
         FluentStyleSheet.MENU.apply(self)
@@ -286,8 +285,7 @@ class RoundMenu(QMenu):
         self.__initWidgets()
 
     def __initWidgets(self):
-        self.setWindowFlags(Qt.Popup | Qt.FramelessWindowHint |
-                            Qt.NoDropShadowWindowHint)
+        self.setWindowFlags(Qt.Popup | settings.CommonWindowFlag)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setMouseTracking(True)
 

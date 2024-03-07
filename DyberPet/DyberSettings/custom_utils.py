@@ -953,10 +953,7 @@ class CharCard(QWidget):
         self.setAutoFillBackground(False)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
 
-        if settings.platform == 'win32':
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.SubWindow) # | Qt.NoDropShadowWindowHint)
-        else:
-            self.setWindowFlags(Qt.FramelessWindowHint) # | Qt.NoDropShadowWindowHint)
+        self.setWindowFlags(settings.CommonWindowFlag) # | Qt.NoDropShadowWindowHint)
 
     def _close(self):
         self.hide()
@@ -1353,10 +1350,7 @@ class ItemCard(QWidget):
         self.setAutoFillBackground(False)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
 
-        if settings.platform == 'win32':
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.SubWindow) # | Qt.NoDropShadowWindowHint)
-        else:
-            self.setWindowFlags(Qt.FramelessWindowHint) # | Qt.NoDropShadowWindowHint)
+        self.setWindowFlags(settings.CommonWindowFlag)
 
     def _close(self):
         self.hide()

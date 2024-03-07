@@ -92,11 +92,7 @@ class DPNote(QWidget):
         self.height_dict = {}
         self.sound_playing = []
 
-        if platform == 'win32':
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.SubWindow)
-        else:
-            # SubWindow not work in MacOS
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+        self.setWindowFlags(settings.CommonWindowFlag | Qt.WindowStaysOnTopHint)
         
 
     def init_note(self, sys_note_conf, pet_note_conf):

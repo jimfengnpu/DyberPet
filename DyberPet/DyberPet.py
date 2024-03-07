@@ -530,17 +530,9 @@ class PetWidget(QWidget):
         :return:
         """
         if settings.on_top_hint:
-            if platform == 'win32':
-                self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.SubWindow | Qt.NoDropShadowWindowHint)
-            else:
-                # SubWindow not work in MacOS
-                self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
+            self.setWindowFlags(settings.CommonWindowFlag | Qt.WindowStaysOnTopHint)
         else:
-            if platform == 'win32':
-                self.setWindowFlags(Qt.FramelessWindowHint | Qt.SubWindow | Qt.NoDropShadowWindowHint)
-            else:
-                # SubWindow not work in MacOS
-                self.setWindowFlags(Qt.FramelessWindowHint | Qt.NoDropShadowWindowHint)
+            self.setWindowFlags(settings.CommonWindowFlag)
 
         self.setAutoFillBackground(False)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
@@ -551,17 +543,9 @@ class PetWidget(QWidget):
 
     def ontop_update(self):
         if settings.on_top_hint:
-            if platform == 'win32':
-                self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.SubWindow | Qt.NoDropShadowWindowHint)
-            else:
-                # SubWindow not work in MacOS
-                self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
+            self.setWindowFlags(settings.CommonWindowFlag | Qt.WindowStaysOnTopHint)
         else:
-            if platform == 'win32':
-                self.setWindowFlags(Qt.FramelessWindowHint | Qt.SubWindow | Qt.NoDropShadowWindowHint)
-            else:
-                # SubWindow not work in MacOS
-                self.setWindowFlags(Qt.FramelessWindowHint | Qt.NoDropShadowWindowHint)
+            self.setWindowFlags(settings.CommonWindowFlag)
                 
         self.setAutoFillBackground(False)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
@@ -1718,9 +1702,9 @@ class PetWidget(QWidget):
         
         if sys.platform == 'win32':
             self.settingUI.setWindowFlags(
-                Qt.FramelessWindowHint | Qt.SubWindow | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
+                Qt.FramelessWindowHint | Qt.ToolTip | Qt.SubWindow | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
         else:
-            self.settingUI.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
+            self.settingUI.setWindowFlags(Qt.FramelessWindowHint | Qt.ToolTip | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
         self.settingUI.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         cardShadowSE = QtWidgets.QGraphicsDropShadowEffect(self.settingUI)
         cardShadowSE.setColor(QColor(189, 167, 165))
@@ -1738,9 +1722,9 @@ class PetWidget(QWidget):
         # BackupManager.setAttribute(BackupManager, QtCore.Qt.AA_EnableHighDpiScaling)
         if sys.platform == 'win32':
             self.backupManager.setWindowFlags(
-                Qt.FramelessWindowHint | Qt.SubWindow | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
+                Qt.FramelessWindowHint | Qt.ToolTip | Qt.SubWindow | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
         else:
-            self.backupManager.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
+            self.backupManager.setWindowFlags(Qt.FramelessWindowHint | Qt.ToolTip | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
         self.backupManager.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         cardShadowSE = QtWidgets.QGraphicsDropShadowEffect(self.backupManager)
         cardShadowSE.setColor(QColor(189, 167, 165))

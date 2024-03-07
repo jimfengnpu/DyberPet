@@ -38,14 +38,7 @@ except:
 '''
 
 
-if platform == 'win32':
-    #basedir = ''
-    flags = Qt.FramelessWindowHint | Qt.SubWindow | Qt.NoDropShadowWindowHint
-else:
-    #basedir = os.path.dirname(__file__) #Path(os.path.dirname(__file__))
-    #basedir = basedir.replace('\\','/')
-    #basedir = '/'.join(basedir.split('/')[:-1])
-    flags = Qt.FramelessWindowHint | Qt.NoDropShadowWindowHint
+flags = settings.CommonWindowFlag
 
 basedir = settings.BASEDIR
 
